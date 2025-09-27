@@ -48,6 +48,32 @@
                 
                  <div class="hero-text">
             <h5>Hi I'm <span class="input"></span></h5>
+
+
+
+                     <div class="profile-actions" aria-live="polite">
+        <div class="counters">
+          <div class="counter">
+            <div class="num" id="followersCount">0</div>
+            <div class="label">متابعين</div>
+          </div>
+          <div class="counter">
+            <div class="num" id="likesCount">0</div>
+            <div class="label">إعجابات</div>
+          </div>
+        </div>
+        
+        <div class="actions">
+          <button class="btn follow" id="followBtn">💠تابع</button>
+          <button class="btn like" id="likeBtn">♥ </button>
+        </div>
+      </div>
+
+
+
+                     
+
+                     
                     <h1 dir="rtl">
                  من أڪوُن ؟
                       </h1>
@@ -168,5 +194,56 @@ var typed = new Typed(".input", {
 });
 
      </script>
+
+    <script>
+  const KEY_FOLLOWERS = "followersCount";
+  const KEY_LIKES = "likesCount";
+  const KEY_FOLLOWED = "isFollowed";
+  const KEY_LIKED = "isLiked";
+
+  const followersCountEl = document.getElementById('followersCount');
+  const likesCountEl = document.getElementById('likesCount');
+  const followBtn = document.getElementById('followBtn');
+  const likeBtn = document.getElementById('likeBtn');
+
+  let followers = parseInt(localStorage.getItem(KEY_FOLLOWERS)) || 1200;
+  let likes = parseInt(localStorage.getItem(KEY_LIKES)) || 230;
+  let followed = localStorage.getItem(KEY_FOLLOWED) === "true";
+  let liked = localStorage.getItem(KEY_LIKED) === "true";
+
+  function updateUI(){
+    followersCountEl.textContent = followers;
+    likesCountEl.textContent = likes;
+    followBtn.textContent = followed ? "Thanks 🫶" : "تابع";
+  }
+
+  function animateNumber(el){
+    el.classList.remove("animate"); // عشان يعيد الأنيميشن من الأول
+    void el.offsetWidth;            // trick لإجبار إعادة التشغيل
+    el.classList.add("animate");
+  }
+
+  followBtn.addEventListener('click', ()=>{
+    followed = !followed;
+    followers += followed ? 1 : -1;
+    localStorage.setItem(KEY_FOLLOWERS, followers);
+    localStorage.setItem(KEY_FOLLOWED, followed);
+    updateUI();
+    animateNumber(followersCountEl);
+  });
+
+  likeBtn.addEventListener('click', ()=>{
+    liked = !liked;
+    likes += liked ? 1 : -1;
+    localStorage.setItem(KEY_LIKES, likes);
+    localStorage.setItem(KEY_LIKED, liked);
+    updateUI();
+    animateNumber(likesCountEl);
+  });
+
+  updateUI();
+</script>
+
+    
 </body>
 </html>
