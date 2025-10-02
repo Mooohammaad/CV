@@ -206,14 +206,15 @@ var typed = new Typed(".input", {
   const followBtn = document.getElementById('followBtn');
   const likeBtn = document.getElementById('likeBtn');
 
-  let followers = parseInt(localStorage.getItem(KEY_FOLLOWERS)) || 207;
-  let likes = parseInt(localStorage.getItem(KEY_LIKES)) || 49;
+  let followers = parseInt(localStorage.getItem(KEY_FOLLOWERS)) || 215;
+  let likes = parseInt(localStorage.getItem(KEY_LIKES)) || 56;
   let followed = localStorage.getItem(KEY_FOLLOWED) === "true";
   let liked = localStorage.getItem(KEY_LIKED) === "true";
 
   function updateUI(){
     followersCountEl.textContent = followers;
     likesCountEl.textContent = likes;
+    likeBtn.textContent = liked ? "Thanks 🫶" : "إعجاب";
     followBtn.textContent = followed ? "Thanks 🫶" : "تابع";
   }
 
