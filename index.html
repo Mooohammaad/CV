@@ -54,11 +54,11 @@
                      <div class="profile-actions" aria-live="polite">
         <div class="counters">
           <div class="counter">
-            <div class="num" id="followersCount">0</div>
+            <div class="num" id="followersCount">1</div>
             <div class="label">متابعين</div>
           </div>
           <div class="counter">
-            <div class="num" id="likesCount">0</div>
+            <div class="num" id="likesCount">1</div>
             <div class="label">إعجابات</div>
           </div>
         </div>
@@ -208,7 +208,7 @@ var typed = new Typed(".input", {
   const followBtn = document.getElementById('followBtn');
   const likeBtn = document.getElementById('likeBtn');
 
-  let followers = parseInt(localStorage.getItem(KEY_FOLLOWERS)) || 221;
+  let followers = parseInt(localStorage.getItem(KEY_FOLLOWERS)) || 219;
   let likes = parseInt(localStorage.getItem(KEY_LIKES)) || 67;
   let followed = localStorage.getItem(KEY_FOLLOWED) === "true";
   let liked = localStorage.getItem(KEY_LIKED) === "true";
