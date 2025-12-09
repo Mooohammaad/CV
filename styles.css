@@ -107,7 +107,7 @@ nav .navlinks li a{
 }
 .hero-pic img{
     bottom:-30px;
-    width:100%;
+    width:105%;
     transition: 0.5s;
 }
 .hero-pic img:hover{
